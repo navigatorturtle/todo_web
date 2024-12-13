@@ -7,9 +7,12 @@ def add_todo():
     todos.append(newtodo+"\n")
     functions.write_todos_to_text_file(todos)
     st.session_state["new_todo"] = ""
-
+st.set_page_config(layout="wide")
 st.title("My todo App")
-st.write("This app will increase your productivity")
+st.write("This app will increase your <b>productivity</b>", unsafe_allow_html=True)
+
+st.text_input(label="Enter new todo",placeholder="Enter a todo",
+              on_change=add_todo, key= "new_todo",label_visibility="hidden" )
 
 for index,todo in enumerate(todos):
     checkbox = st.checkbox(todo,key=f"{todo}{index}")
@@ -19,5 +22,3 @@ for index,todo in enumerate(todos):
         del st.session_state[f"{todo}{index}"]
         st.rerun()
 
-st.text_input(label="Enter new todo",placeholder="Enter a todo",
-              on_change=add_todo, key= "new_todo",label_visibility="hidden" )

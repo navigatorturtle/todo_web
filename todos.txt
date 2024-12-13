@@ -1,1 +1,4 @@
-Walk
+Walkrun
+bike
+swim
+run
